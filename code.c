@@ -183,12 +183,14 @@ void intakeStay(){
 		}
 		driveStop();
 	}
+
 	void autonBack2(){
 		while((leftDriveEncode()<1800)&&(rightDriveEncode()>-1800)){
 			driveTurnRight();
 		}
 		driveStop();
 	}
+
 	/*---------------------------------------------------------------------------*/
 	/*                                                                           */
 	/*        Description: Competition template for VEX EDR                      */
