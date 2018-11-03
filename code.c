@@ -152,7 +152,7 @@ void intakeStay(){
 	/*        Description: Autonomous Functions                                  */
 	/*                                                                           */
 	/*---------------------------------------------------------------------------*/
-	
+
 	//Auton functions
 	void autonForward(){
 		while((leftDriveEncode()<840)&&(rightDriveEncode()<840)){
@@ -160,16 +160,16 @@ void intakeStay(){
 		}
 		driveStop();
 	}
-	
+
 	void autonForward2(){
 		while((leftDriveEncode()<680)&&(rightDriveEncode()<680)){
 			driveForward();
 		}
 			driveStop();
 	}
-	
+
 	//void autonPuncher(){
-	
+
 	void autonBack(){
 		while((leftDriveEncode()>-1800)&&(rightDriveEncode()>-1800)){
 			driveBack();
@@ -183,14 +183,12 @@ void intakeStay(){
 		}
 		driveStop();
 	}
-
 	void autonBack2(){
 		while((leftDriveEncode()<1800)&&(rightDriveEncode()>-1800)){
 			driveTurnRight();
 		}
 		driveStop();
 	}
-
 	/*---------------------------------------------------------------------------*/
 	/*                                                                           */
 	/*        Description: Competition template for VEX EDR                      */
@@ -246,7 +244,7 @@ void intakeStay(){
 
 //Blue1 auton
 //Drive forward
-	
+
 
 //Puncher shoot
 
@@ -261,8 +259,8 @@ void intakeStay(){
 
 
 //Drive backwards
-	
-	
+
+
 	}
 
 	/*---------------------------------------------------------------------------*/
