@@ -86,11 +86,6 @@ void liftStay(){
 	liftFunc(0);
 }
 
-//Flipper function
-void flipperFunc(int power){
-	motor[flipper]= power;
-}
-
 //Flipper user control functions
 void flipperUp(){
 	motor[flipper]= 127;
@@ -100,11 +95,6 @@ void flipperDown(){
 }
 void flipperStay(){
 	motor[flipper]= 0;
-}
-
-//Claw functon
-void clawFunc(int power){
-	motor[flipper]= power;
 }
 
 //User control claw functions
@@ -118,12 +108,7 @@ void clawStay(){
 	motor[claw]= 0;
 }
 
-//Intake function
-void intakeFunc(int power){
-	motor[intake]= power;
-}
-
-//User control claw functions
+//User control intake functions
 void intakeUp(){
 	motor[intake]= (127);
 }
@@ -134,41 +119,43 @@ void intakeStay(){
 	motor[intake]= (0);
 }
 
-	//Puncher function
-	void puncherFunc(int power){
-		motor[puncher]= power;
-	}
+//Puncher function
+void puncherFunc (int power){
+	motor[puncher]= power;
+}
 
-	//User control claw functions
-	void puncherShoot(){
-		motor[puncher]= (127);
-	}
-	void puncherStay(){
-		motor[puncher]= (0);
-	}
 
-  /*---------------------------------------------------------------------------*/
-	/*                                                                           */
-	/*        Description: Autonomous Functions                                  */
-	/*                                                                           */
-	/*---------------------------------------------------------------------------*/
+//User control puncher functions
+void puncherShoot(){
+	motor[puncher]= (127);
+}
+void puncherStay(){
+	motor[puncher]= (0);
+}
 
-	//Auton functions
-	void autonForward(){
-		while((leftDriveEncode()<840)&&(rightDriveEncode()<840)){
-			driveForward();
-		}
-		driveStop();
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Autonomous Functions                                  */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
+
+//Auton functions
+void autonForward(){
+	while((leftDriveEncode()<840)&&(rightDriveEncode()<840)){
+		driveForward();
 	}
+	driveStop();
+}
+
+void autonPuncher(){
+	motor[puncher]=
 
 	void autonForward2(){
 		while((leftDriveEncode()<680)&&(rightDriveEncode()<680)){
 			driveForward();
 		}
-			driveStop();
+		driveStop();
 	}
-
-	//void autonPuncher(){
 
 	void autonBack(){
 		while((leftDriveEncode()>-1800)&&(rightDriveEncode()>-1800)){
@@ -244,23 +231,23 @@ void intakeStay(){
 	task autonomous()
 	{
 
-//Blue1 auton
-//Drive forward
+		//Blue1 auton (flagSide)
+		//Drive forward
 
 
-//Puncher shoot
+		//Puncher shoot
 
 
-//Drive forward
+		//Drive forward
 
 
-//Drive backwards
+		//Drive backwards
 
 
-//Turn left
+		//Turn left
 
 
-//Drive backwards
+		//Drive backwards
 
 
 	}
@@ -312,10 +299,20 @@ void intakeStay(){
 		}
 
 		//Intake program
-if (vexRT[
-
+		if (vexRT[Btn5U]==1){
+			intakeUp();
+			}else if(vexRT[Btn5D]==1){
+			intakeDown();
+			}else {
+			intakeStay();
+		}
 
 		//Puncher program
+		if (vexRT[Btn7U]==1){
+			puncherShoot();
+			}else {
+			puncherStay();
+		}
 
 	}
 
