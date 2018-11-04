@@ -35,7 +35,6 @@ int liftPotent(){
 int leftDriveEncode(){
 	return(SensorValue[leftEncoder]);
 }
-
 int rightDriveEncode(){
 	return(SensorValue[rightEncoder]);
 }
@@ -50,23 +49,18 @@ void driveFunc(int power1, int power2){
 void drive(){
 	driveFunc(vexRT[Ch3], vexRT[Ch2]);
 }
-
 void driveForward(){
 	driveFunc(127,127);
 }
-
 void driveBack(){
 	driveFunc(-127,-127);
 }
-
 void driveTurnLeft(){
 	driveFunc(-127,127);
 }
-
 void driveTurnRight(){
 	driveFunc(127,-127);
 }
-
 void driveStop(){
 	driveFunc(0,0);
 }
@@ -81,11 +75,9 @@ void liftFunc(int power){
 void liftUp(){
 	liftFunc(127);
 }
-
 void liftDown(){
 	liftFunc(-127);
 }
-
 void liftStay(){
 	liftFunc(0);
 }
@@ -142,180 +134,178 @@ void puncherStay(){
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
 
-//Auton functions
+//Auton functions -sorry for the mess
 void autonForward(){
 	while((leftDriveEncode()<840)&&(rightDriveEncode()<840)){
 		driveForward();
 	}
 	driveStop();
 }
-
-	void autonForward2(){
-		while((leftDriveEncode()<680)&&(rightDriveEncode()<680)){
-			driveForward();
-		}
-		driveStop();
+void autonForward2(){
+	while((leftDriveEncode()<680)&&(rightDriveEncode()<680)){
+		driveForward();
 	}
-
-	void autonBack(){
-		while((leftDriveEncode()>-1800)&&(rightDriveEncode()>-1800)){
-			driveBack();
-		}
-		driveStop();
+	driveStop();
+}
+void autonBack(){
+	while((leftDriveEncode()>-1800)&&(rightDriveEncode()>-1800)){
+		driveBack();
 	}
-
-	void autonTurnLeft(){
-		while((leftDriveEncode()>-1800)&&(rightDriveEncode()<1800)){
-			driveTurnLeft();
-		}
-		driveStop();
+	driveStop();
+}
+void autonBack2(){
+	while((leftDriveEncode()>-1800)&&(rightDriveEncode()>-1800)){
+		driveTurnRight();
 	}
-
-	void autonBack2(){
-		while((leftDriveEncode()<1800)&&(rightDriveEncode()>-1800)){
-			driveTurnRight();
-		}
-		driveStop();
+	driveStop();
+}
+void autonTurnLeftR(){
+	while((leftDriveEncode()<720)&&(rightDriveEncode()>-720)){
+		driveTurnLeft();
 	}
+	driveStop();
+}
 
-	/*---------------------------------------------------------------------------*/
-	/*                                                                           */
-	/*        Description: Competition template for VEX EDR                      */
-	/*                                                                           */
-	/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Competition template for VEX EDR                      */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
 
-	// This code is for the VEX cortex platform
+// This code is for the VEX cortex platform
 #pragma platform(VEX2)
 
-	// Select Download method as "competition"
+// Select Download method as "competition"
 #pragma competitionControl(Competition)
 
-	//Main competition background code...do not modify!
+//Main competition background code...do not modify!
 
-	/*---------------------------------------------------------------------------*/
-	/*                          Pre-Autonomous Functions                         */
-	/*                                                                           */
-	/*  You may want to perform some actions before the competition starts.      */
-	/*  Do them in the following function.  You must return from this function   */
-	/*  or the autonomous and usercontrol tasks will not be started.  This       */
-	/*  function is only called once after the cortex has been powered on and    */
-	/*  not every time that the robot is disabled.                               */
-	/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*                          Pre-Autonomous Functions                         */
+/*                                                                           */
+/*  You may want to perform some actions before the competition starts.      */
+/*  Do them in the following function.  You must return from this function   */
+/*  or the autonomous and usercontrol tasks will not be started.  This       */
+/*  function is only called once after the cortex has been powered on and    */
+/*  not every time that the robot is disabled.                               */
+/*---------------------------------------------------------------------------*/
 
-	void pre_auton()
-	{
-		// Set bStopTasksBetweenModes to false if you want to keep user created tasks
-		// running between Autonomous and Driver controlled modes. You will need to
-		// manage all user created tasks if set to false.
-		bStopTasksBetweenModes = true;
+void pre_auton()
+{
+	// Set bStopTasksBetweenModes to false if you want to keep user created tasks
+	// running between Autonomous and Driver controlled modes. You will need to
+	// manage all user created tasks if set to false.
+	bStopTasksBetweenModes = true;
 
-		// Set bDisplayCompetitionStatusOnLcd to false if you don't want the LCD
-		// used by the competition include file, for example, you might want
-		// to display your team name on the LCD in this function.
-		// bDisplayCompetitionStatusOnLcd = false;
+	// Set bDisplayCompetitionStatusOnLcd to false if you don't want the LCD
+	// used by the competition include file, for example, you might want
+	// to display your team name on the LCD in this function.
+	// bDisplayCompetitionStatusOnLcd = false;
 
-		// All activities that occur before the competition starts
-		// Example: clearing encoders, setting servo positions, ...
+	// All activities that occur before the competition starts
+	// Example: clearing encoders, setting servo positions, ...
+}
+
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*                              Autonomous Task                              */
+/*                                                                           */
+/*  This task is used to control your robot during the autonomous phase of   */
+/*  a VEX Competition.                                                       */
+/*                                                                           */
+/*  You must modify the code to add your own robot specific commands here.   */
+/*---------------------------------------------------------------------------*/
+
+task autonomous()
+{
+
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Blue1 Autonomous (flagSide) (6pts.)                   */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
+
+	//Drive forward
+	while(true){
+		autonForward();
+	}
+	//Puncher shoot (hit middle flag for 2pts.)
+
+	//Drive forward (hit lower flag for 1pt.)
+	while(true){
+		autonForward2();
+	}
+	//Drive back
+	while(true){
+		autonBack();
+	}
+	//Turn left in reverse
+	while(true){
+		autonTurnLeftR();
+	}
+	//Drive back (park on platform for 3pts.)
+	while(true){
+		autonBack2();
 	}
 
-	/*---------------------------------------------------------------------------*/
-	/*                                                                           */
-	/*                              Autonomous Task                              */
-	/*                                                                           */
-	/*  This task is used to control your robot during the autonomous phase of   */
-	/*  a VEX Competition.                                                       */
-	/*                                                                           */
-	/*  You must modify the code to add your own robot specific commands here.   */
-	/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Blue2 Autonomous (capSide) (5pts.)                    */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
 
-	task autonomous()
-	{
+	//Drive forward (hit cap for 1pt.)
+	//Drive back
+	//Turn left in reverse
+	//Drive forward
+	//Flipper down
+	//Lift up (flip cap for 1pt.)
+	//Turn left in reverse
+	//Drive back (park on platform for 3pts.)
 
-		//Blue1 auton (flagSide)
-		//Drive forward
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Red1 Autonomous (flagSide) (6pts.)                    */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
 
+	//Drive forward
+	//Puncher shoot (hit middle flag for 2pts.)
+	//Drive forward (hit lower flag for 1pt.)
+	//Drive back
+	//Turn right in reverse
+	//Drive back (park on platform for 3pts.)
 
-		//Puncher shoot
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Red2 Autonomous (capSide) (5pts.)                     */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
 
+	//Drive forward (hit cap for 1pt.)
+	//Drive back
+	//Turn right
+	//Drive forward
+	//Flipper down
+	//Lift up (flip cap for 1pt.)
+	//Turn left in reverse
+	//Drive back (park on platform for 3pts.)
 
-		//Drive forward
+}
 
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*                              User Control Task                            */
+/*                                                                           */
+/*  This task is used to control your robot during the user control phase of */
+/*  a VEX Competition.                                                       */
+/*                                                                           */
+/*  You must modify the code to add your own robot specific commands here.   */
+/*---------------------------------------------------------------------------*/
 
-		//Drive backwards
-
-
-		//Turn left
-
-
-		//Drive backwards
-
-
-	}
-
-	/*---------------------------------------------------------------------------*/
-	/*                                                                           */
-	/*                              User Control Task                            */
-	/*                                                                           */
-	/*  This task is used to control your robot during the user control phase of */
-	/*  a VEX Competition.                                                       */
-	/*                                                                           */
-	/*  You must modify the code to add your own robot specific commands here.   */
-	/*---------------------------------------------------------------------------*/
-
-	task usercontrol()
-	{
-		// User control code here, inside the loop
-
-		//Drive program
-		while(true){
-			drive();
-		}
-
-		//Lift program
-		if(vexRT[Btn6U]==1){
-			liftUp();
-			}else if (vexRT[Btn6D]==1){
-			liftDown();
-			}else {
-			liftStay();
-		}
-
-		//Flipper program
-		if (vexRT[Btn8U]==1){
-			flipperUp();
-			}else if(vexRT[Btn8D]==1){
-			flipperDown();
-			}else {
-			flipperStay();
-		}
-
-		//Claw program
-		if (vexRT[Btn8R]==1){
-			clawOpen();
-			}else if(vexRT[Btn8L]==1){
-			clawClose();
-			}else {
-			clawStay();
-		}
-
-		//Intake program
-		if (vexRT[Btn5U]==1){
-			intakeUp();
-			}else if(vexRT[Btn5D]==1){
-			intakeDown();
-			}else {
-			intakeStay();
-		}
-
-		//Puncher program
-		if (vexRT[Btn7U]==1){
-			puncherShoot();
-			}else {
-			puncherStay();
-		}
-
-	}
-
+task usercontrol()
+{
+	// User control code here, inside the loop
 
 	// This is the main execution loop for the user control program.
 	// Each time through the loop your program should update motor + servo
@@ -325,3 +315,53 @@ void autonForward(){
 	// Insert user code here. This is where you use the joystick values to
 	// update your motors, etc.
 	// ........................................................................
+
+	//Drive program
+	while(true){
+		drive();
+	}
+
+	//Lift program
+	if(vexRT[Btn6U]==1){
+		liftUp();
+		}else if (vexRT[Btn6D]==1){
+		liftDown();
+		}else {
+		liftStay();
+	}
+
+	//Flipper program
+	if (vexRT[Btn8U]==1){
+		flipperUp();
+		}else if(vexRT[Btn8D]==1){
+		flipperDown();
+		}else {
+		flipperStay();
+	}
+
+	//Claw program
+	if (vexRT[Btn8R]==1){
+		clawOpen();
+		}else if(vexRT[Btn8L]==1){
+		clawClose();
+		}else {
+		clawStay();
+	}
+
+	//Intake program
+	if (vexRT[Btn5U]==1){
+		intakeUp();
+		}else if(vexRT[Btn5D]==1){
+		intakeDown();
+		}else {
+		intakeStay();
+	}
+
+	//Puncher program
+	if (vexRT[Btn7U]==1){
+		puncherShoot();
+		}else {
+		puncherStay();
+	}
+
+}
