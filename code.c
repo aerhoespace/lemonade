@@ -147,9 +147,6 @@ void autonForward(){
 	driveStop();
 }
 
-void autonPuncher(){
-	motor[puncher]=
-
 	void autonForward2(){
 		while((leftDriveEncode()<680)&&(rightDriveEncode()<680)){
 			driveForward();
