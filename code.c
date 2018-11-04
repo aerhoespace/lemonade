@@ -154,19 +154,13 @@ void autonBack(){
 	driveStop();
 }
 void autonBack2(){
-	while((leftDriveEncode()<1800)&&(rightDriveEncode()>-1800)){
+	while((leftDriveEncode()>-1800)&&(rightDriveEncode()>-1800)){
 		driveTurnRight();
 	}
 	driveStop();
 }
 void autonTurnLeftR(){
 	while((leftDriveEncode()<720)&&(rightDriveEncode()>-720)){
-		driveTurnLeft();
-	}
-	driveStop();
-}
-void autonTurnRightR(){
-	while((leftDriveEncode()>-720)&&(rightDriveEncode()<720)){
 		driveTurnLeft();
 	}
 	driveStop();
@@ -225,11 +219,11 @@ void pre_auton()
 task autonomous()
 {
 
-	/*---------------------------------------------------------------------------*/
-	/*                                                                           */
-	/*        Description: Blue1 Autonomous (flagSide) (6pts.)                   */
-	/*                                                                           */
-	/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Blue1 Autonomous (flagSide) (6pts.)                   */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
 
 	//Drive forward
 	while(true){
@@ -253,11 +247,11 @@ task autonomous()
 		autonBack2();
 	}
 
-	/*---------------------------------------------------------------------------*/
-	/*                                                                           */
-	/*        Description: Blue2 Autonomous (capSide) (5pts.)                    */
-	/*                                                                           */
-	/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Blue2 Autonomous (capSide) (5pts.)                    */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
 
 	//Drive forward (hit cap for 1pt.)
 	//Drive back
@@ -268,32 +262,32 @@ task autonomous()
 	//Turn left in reverse
 	//Drive back (park on platform for 3pts.)
 
-	/*---------------------------------------------------------------------------*/
-	/*                                                                           */
-	/*        Description: Red1 Autonomous (flagSide) (6pts.)                    */
-	/*                                                                           */
-	/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Red1 Autonomous (flagSide) (6pts.)                    */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
 
 	//Drive forward
 	//Puncher shoot (hit middle flag for 2pts.)
 	//Drive forward (hit lower flag for 1pt.)
 	//Drive back
-	//Turn left in reverse
+	//Turn right in reverse
 	//Drive back (park on platform for 3pts.)
 
-	/*---------------------------------------------------------------------------*/
-	/*                                                                           */
-	/*        Description: Red2 Autonomous (capSide) (5pts.)                     */
-	/*                                                                           */
-	/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Red2 Autonomous (capSide) (5pts.)                     */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
 
 	//Drive forward (hit cap for 1pt.)
 	//Drive back
-	//Turn right in reverse
+	//Turn right
 	//Drive forward
 	//Flipper down
 	//Lift up (flip cap for 1pt.)
-	//Turn right in reverse
+	//Turn left in reverse
 	//Drive back (park on platform for 3pts.)
 
 }
