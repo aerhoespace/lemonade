@@ -20,7 +20,11 @@
 
 #include "Vex_Competition_Includes.c"  //Main competition background code...do not modify!
 
-//State all functions
+/*---------------------------------------------------------------------------*/
+/*                                                                           */
+/*        Description: Sensors and Driver Control Functions                  */
+/*                                                                           */
+/*---------------------------------------------------------------------------*/
 
 //Lift potentiometers
 int liftPotent(){
@@ -124,7 +128,6 @@ void puncherFunc (int power){
 	motor[puncher]= power;
 }
 
-
 //User control puncher functions
 void puncherShoot(){
 	motor[puncher]= (127);
@@ -146,9 +149,6 @@ void autonForward(){
 	}
 	driveStop();
 }
-
-void autonPuncher(){
-	motor[puncher]=
 
 	void autonForward2(){
 		while((leftDriveEncode()<680)&&(rightDriveEncode()<680)){
