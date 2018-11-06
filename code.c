@@ -47,6 +47,12 @@
 
 void pre_auton()
 {
+	//hint: if you want to do a multi line comment 
+	/*-- then you can do this
+	
+	and end it a couple lines later
+	--*/              //  -acetousk
+	
 	// Set bStopTasksBetweenModes to false if you want to keep user created tasks
 	// running between Autonomous and Driver controlled modes. You will need to
 	// manage all user created tasks if set to false.
