@@ -27,24 +27,24 @@ void drive(){
 }
 
 // Lift function
-void liftFunc(int power){
-	SetMotor(leftlift,power);
-	SetMotor(rightlift,power);
-}
+//void liftFunc(int power){
+//	SetMotor(leftlift,power);
+//	SetMotor(rightlift,power);
+//}
 
 // User control lift functions
-void liftUp(){
-	SetMotor(leftlift,100);
-	SetMotor(rightlift,100);
-}
-void liftDown(){
-	SetMotor(leftlift,-100);
-	SetMotor(rightlift,-100);
-}
-void liftStay(){
-	SetMotor(leftlift,0);
-	SetMotor(rightlift,0);
-}
+//void liftUp(){
+//	SetMotor(leftlift,100);
+//	SetMotor(rightlift,100);
+//}
+//void liftDown(){
+//	SetMotor(leftlift,-100);
+//	SetMotor(rightlift,-100);
+//}
+//void liftStay(){
+//	SetMotor(leftlift,0);
+//	SetMotor(rightlift,0);
+//}
 
 // User control flipper functions
 //void flipperUp(){
