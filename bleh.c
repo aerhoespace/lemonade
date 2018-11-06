@@ -37,7 +37,7 @@
 #pragma platform(VEX2)
 
 // Select Download method as "competition"
-#pragma competitionControl(Competition)
+#pragma competitionControl(Competition)  //I would only do that if you have it competition ready -acetousk
 
 // Main competition background code...do not modify!
 
@@ -82,7 +82,6 @@ void pre_auton()
 
 	// Smart motor start
 	SmartMotorRun();
-
 }
 
 /*---------------------------------------------------------------------------*/
