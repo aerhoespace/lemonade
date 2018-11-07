@@ -23,7 +23,7 @@ void driveFunc(int power1, int power2){
 
 // User control drive functions
 void drive(){
-	driveFunc(vexRT[Ch2], vexRT[Ch3]);
+	driveFunc(vexRT[Ch3], vexRT[Ch2]);
 }
 
 // Lift function
