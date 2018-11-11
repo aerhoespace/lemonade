@@ -21,7 +21,7 @@
 #include "jpearman/SmartMotorLib.c"
 // Other files
 #include "dcfunc.c"
-#include "auton.c"
+#include "autonfunc.c"
 #include "pid.c"
 
 #include "Vex_Competition_Includes.c"  // Main competition background code...do not modify!
@@ -94,12 +94,6 @@ void pre_auton()
 
 task autonomous()
 {
-	// blue1(flagSide)
-	// Drive forward (maybe)
-	// Shoot top flag
-  // Drive forward
-  // Shoot middle flag
-  // Drive forward to hit bottom flag
 
 }
 
@@ -131,33 +125,6 @@ task usercontrol()
 	while(true){
 		drive();
 	}
-
-	// Lift program
-	//if(vexRT[Btn6U]==1){
-	//	liftUp();
-	//	}else if (vexRT[Btn6D]==1){
-	//	liftDown();
-	//	}else {
-	//	liftStay();
-	//}
-
-	// Flipper program
-	//if (vexRT[Btn8U]==1){
-	//	flipperUp();
-	//	}else if(vexRT[Btn8D]==1){
-	//	flipperDown();
-	//	}else {
-	//	flipperStay();
-	//}
-
-	// Claw program
-	//if (vexRT[Btn8R]==1){
-	//	clawOpen();
-	//	}else if(vexRT[Btn8L]==1){
-	//	clawClose();
-	//	}else {
-	//	clawStay();
-	//}
 
 	// Intake program
 	if (vexRT[Btn5U]==1){
