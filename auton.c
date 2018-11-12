@@ -21,8 +21,8 @@ void rightDrivePID(int clicks){
 }
 
 void drivePID(int power1, int power2){
-leftDrivePID(power1);
-rightDrivePID(power2);
+	leftDrivePID(power1);
+	rightDrivePID(power2);
 }
 
 // Auton Middle Level

@@ -118,25 +118,24 @@ task autonomous()
 
 task usercontrol()
 {
-	auton();
+	//Drive program
+	while(true){
+		driveStraight(100);
+	}
 
-	// Drive program
-	//while(true){
-	//	driveStraight();
-	//}
+	//Intake program
+	if (vexRT[Btn5U]==1){
+		intakeUp();
+		}else if(vexRT[Btn5D]==1){
+		intakeDown();
+		}else {
+		intakeStay();
+	}
 
-	// Intake program
-	//if (vexRT[Btn5U]==1){
-	//	intakeUp();
-	//	}else if(vexRT[Btn5D]==1){
-	//	intakeDown();
-	//	}else {
-	//	intakeStay();
-	//}
-
-	// Puncher program
-	//if (vexRT[Btn7U]==1){
-	//	puncherShoot();
-	//	}else {
-	//	puncherStay();
+	//Puncher program
+	if (vexRT[Btn7U]==1){
+		puncherShoot();
+		}else {
+		puncherStay();
+	}
 }
