@@ -1,5 +1,3 @@
-#pragma config(Sensor, in1,    leftPotent,     sensorPotentiometer)
-#pragma config(Sensor, in2,    rightPotent,    sensorPotentiometer)
 #pragma config(Sensor, dgtl1,  leftEncoder,    sensorQuadEncoder)
 #pragma config(Sensor, dgtl3,  rightEncoder,   sensorQuadEncoder)
 #pragma config(Motor,  port2,           intake,        tmotorVex393HighSpeed_MC29, openLoop)
@@ -126,20 +124,20 @@ task usercontrol()
 		drive();
 	}
 
-	// Intake program
-	if (vexRT[Btn5U]==1){
-		intakeUp();
-		}else if(vexRT[Btn5D]==1){
-		intakeDown();
-		}else {
-		intakeStay();
-	}
+		// Intake program
+		if (vexRT[Btn5U]==1){
+			intakeUp();
+			}else if(vexRT[Btn5D]==1){
+			intakeDown();
+			}else {
+			intakeStay();
+		}
 
-	// Puncher program
-	if (vexRT[Btn7U]==1){
-		puncherShoot();
-		}else {
-		puncherStay();
-	}
+		// Puncher program
+		if (vexRT[Btn7U]==1){
+			puncherShoot();
+			}else {
+			puncherStay();
+		}
 
-}
+	}

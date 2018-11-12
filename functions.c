@@ -34,15 +34,7 @@ void waitFunc(int time){
 	wait1Msec(time);
 }
 
-// Drive encoders
-int leftEncode(){
-	return(SensorValue[leftEncoder]);
-}
-int rightEncode(){
-	return(SensorValue[rightEncoder]);
-}
-
-// User control drive function
+// User control drive functions
 void driveFunc(int speed1, int speed2){
 	SetMotor(left1,speed1);
 	SetMotor(right1,speed2);
@@ -51,30 +43,8 @@ void driveFunc(int speed1, int speed2){
 	SetMotor(left3,speed1);
 	SetMotor(right3,speed2);
 }
-
-// Drive PID
-void drivePID(int power1, int power2){
-	leftDrivePID(power1);
-	rightDrivePID(power2);
-}
-
-// Auton Middle Level
-// Drive functions
-// Drive Function Middle Level
-void driveStraight(int power){
-	drivePID(power,power);
-}
-
-void driveStop(){
-	drivePID(0,0);
-}
-
-// User control drive functions
 void drive(){
 	driveFunc(vexRT[Ch3], vexRT[Ch2]);
-}
-void driveStop(){
-	driveFunc(0,0);
 }
 
 // User control intake functions
