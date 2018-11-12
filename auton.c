@@ -37,6 +37,9 @@ void driveStop(){
 
 // Auton High Level
 void auton(){
-	leftDrivePID(100);
-	rightDrivePID(100);
+	drivePID(100,100);
+	wait1Msec(100);
+}
+void driveStop(){
+	wait1Msec(100);
 }
