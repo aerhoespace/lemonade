@@ -90,9 +90,8 @@ void pre_auton()
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-task autonomous()
-{
-
+task autonomous(){
+	auton();
 }
 
 /*---------------------------------------------------------------------------*/
@@ -118,26 +117,32 @@ task autonomous()
 
 task usercontrol()
 {
+	if (vexRT[Btn8U]==1){
+		auton();
+		drive();
+		wait1Msec(1000);
+	}
+	driveStop();{
+		wait1Msec(100);
+	}
 
 	// Drive program
-	while(true){
-		drive();
-	}
+	//while(true){
+	//	drive();
+	//}
 
-		// Intake program
-		if (vexRT[Btn5U]==1){
-			intakeUp();
-			}else if(vexRT[Btn5D]==1){
-			intakeDown();
-			}else {
-			intakeStay();
-		}
+	// Intake program
+	//if (vexRT[Btn5U]==1){
+	//	intakeUp();
+	//	}else if(vexRT[Btn5D]==1){
+	//	intakeDown();
+	//	}else {
+	//	intakeStay();
+	//}
 
-		// Puncher program
-		if (vexRT[Btn7U]==1){
-			puncherShoot();
-			}else {
-			puncherStay();
-		}
-
-	}
+	// Puncher program
+	//if (vexRT[Btn7U]==1){
+	//	puncherShoot();
+	//	}else {
+	//	puncherStay();
+}

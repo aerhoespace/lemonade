@@ -29,7 +29,7 @@ float  pid_Kd = 0.0;
 static int   pidRunning = 1;
 static float pidRequestedValue;
 
-// Delay void
+// Delay
 void waitFunc(int time){
 	wait1Msec(time);
 }

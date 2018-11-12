@@ -39,5 +39,4 @@ void driveStop(){
 void auton(){
 	leftDrivePID(100);
 	rightDrivePID(100);
-	wait1Msec(100);
 }
