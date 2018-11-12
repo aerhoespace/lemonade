@@ -79,7 +79,7 @@ task rightPIDController(){
 		}
 
 		// Run at 50Hz
-		wait1Msec(25);
+		wait1Msec(50);
 	}
 }
 
