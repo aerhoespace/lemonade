@@ -28,12 +28,12 @@ int rightEncode(int clicks){
 
 // User control drive functions
 void driveFunc(int speed1, int speed2){
-	SetMotor(left1,speed1);
-	SetMotor(right1,speed2);
-	SetMotor(left2,speed1);
-	SetMotor(right2,speed2);
-	SetMotor(left3,speed1);
-	SetMotor(right3,speed2);
+	motor[left1]= speed1;
+	motor[right1]= speed2;
+	motor[left2]= speed1;
+	motor[right2]= speed2;
+	motor[left3]= speed1;
+	motor[right3]= speed2;
 }
 void drive(){
 	driveFunc(vexRT[Ch3], vexRT[Ch2]);
@@ -44,21 +44,10 @@ void stopMotor(int time){
 	wait1Msec(time);
 }
 
-// User control intake functions
-//void intakeUp(){
-// SetMotor(intake,100);
-//}
-//void intakeDown(){
-//	SetMotor(intake,-100);
-//}
-//void intakeStay(){
-//	SetMotor(intake,0);
-//}
-
 // User control puncher functions
 void puncherShoot(){
-	SetMotor(puncher,100);
+	motor[a]= 100;
 }
 void puncherStay(){
-	SetMotor(puncher,0);
+	motor[a]= 0;
 }
