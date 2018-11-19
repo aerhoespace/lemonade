@@ -43,11 +43,3 @@ void drive(){
 void stopMotor(int time){
 	wait1Msec(time);
 }
-
-// User control puncher functions
-void puncherShoot(){
-	motor[a]= 100;
-}
-void puncherStay(){
-	motor[a]= 0;
-}
