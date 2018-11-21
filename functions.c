@@ -18,3 +18,11 @@ void driveFunc(int speed1, int speed2){
 void drive(){
 	driveFunc(vexRT[Ch3], vexRT[Ch2]);
 }
+<<<<<<< HEAD
+=======
+
+// Stop motor
+void stopMotor(int time){
+	wait1Msec(time);
+}
+>>>>>>> 9aae422c1c4deebf35760fd6988cc507c7e6a559
