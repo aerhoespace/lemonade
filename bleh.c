@@ -3,7 +3,8 @@
 #pragma config(Motor,  port1,           left1,         tmotorVex393HighSpeed_HBridge, openLoop)
 #pragma config(Motor,  port2,           left2,         tmotorVex393HighSpeed_MC29, openLoop)
 #pragma config(Motor,  port3,           left3,         tmotorVex393HighSpeed_MC29, openLoop)
-#pragma config(Motor,  port7,           a,             tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor,  port4,           puncher,       tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor,  port7,           intake,        tmotorVex393HighSpeed_MC29, openLoop, reversed)
 #pragma config(Motor,  port8,           right1,        tmotorVex393HighSpeed_MC29, openLoop, reversed)
 #pragma config(Motor,  port9,           right2,        tmotorVex393HighSpeed_MC29, openLoop, reversed)
 #pragma config(Motor,  port10,          right3,        tmotorVex393HighSpeed_HBridge, openLoop, reversed)
@@ -40,7 +41,7 @@ static int   pidRunning = 1;
 static float pidRequestedValue;
 
 // SmartMotorLibrary
-//#include "jpearman/SmartMotorLib.c"
+#include "jpearman/SmartMotorLib.c"
 // Other files
 #include "functions.c"
 #include "auton.c"
@@ -79,12 +80,12 @@ void pre_auton()
 	// Set bStopTasksBetweenModes to false if you want to keep user created tasks
 	// running between Autonomous and Driver controlled modes. You will need to
 	// manage all user created tasks if set to false.
-	bStopTasksBetweenModes = true;
+	bStopTasksBetweenModes = false;
 
 	// All activities that occur before the competition starts
 	// Example: clearing encoders, setting servo positions, ...
 	// Enable smart motor library
-	//SmartMotorsInit();
+	SmartMotorsInit();
 
 	// Define motors plugged into power expander
 	// SmartMotorsAddPowerExtender( motorA, motorB, motorC, motorD );
@@ -92,16 +93,14 @@ void pre_auton()
 	// Link motors
 
 	// Drive motors
-	/*SmartMotorLinkMotors(left1,left2);
+	SmartMotorLinkMotors(left1,left2);
 	SmartMotorLinkMotors(left1,left3);
 	SmartMotorLinkMotors(right1,right2);
 	SmartMotorLinkMotors(right1,right3);
-
 	// Current monitor
 	SmartMotorCurrentMonitorEnable();
-
 	// Smart motor start
-	SmartMotorRun();*/
+	SmartMotorRun();
 }
 
 /*---------------------------------------------------------------------------*/
@@ -142,17 +141,27 @@ task autonomous()
 
 task usercontrol()
 {
-	//Drive program
+	// Drive program
 	while(true){
 		drive();{
 		}
 
-		//Puncher program
-		if(vexRT[Btn6U]==1){
-			motor[a]=127;
+		// Intake program
+		if (vexRT[Btn5U]==1){
+			motor[intake]=127;
+			}else if (vexRT[Btn5D]==1){
+			motor[intake]=-127;
 			} else{
-			motor[a]=0;
+			motor[intake]=0;
 		}
-	}
 
+		// Puncher program
+		if (vexRT[Btn6U]==1){
+			motor[puncher]=127;
+			} else{
+			motor[puncher]=0;
+		}
+
+
+	}
 }

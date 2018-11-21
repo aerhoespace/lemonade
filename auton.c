@@ -5,31 +5,47 @@
 #pragma userControlDuration(105)
 
 
+// Drive encoders
+int leftEncode(int clicks){
+	return(SensorValue[leftEncoder]);
+}
+int rightEncode(int clicks){
+	return(SensorValue[rightEncoder]);
+}
+
+// Drive PID
+void leftDrivePID(int clicks){
+	pidRequestedValue = clicks;
+}
+void rightDrivePID(int clicks){
+	pidRequestedValue = clicks;
+}
+void drivePID(int power1, int power2){
+	leftDrivePID(power1);
+	rightDrivePID(power2);
+}
 
 // Auton functions
-// Drive
-void autoDrive(){
-	drivePID(127,127);
-}
-void autoStop(){
-	wait1Msec(100);
+// Stop motor
+void stopMotor(int time){
+	wait1Msec(time);
 }
 
 // Intake
-//void autoTake(int time){
-//	motor[intake]=127;
-//	wait1Msec(time);
-//	stopMotor(intake);
-//}
-//void autoGive(int time){
-//	SetMotor(intake,-100);
-//	wait1Msec(time);
-//	stopMotor(intake);
-//}
+void autoTake(int time){
+	SetMotor(intake,127);
+	wait1Msec(time);
+	stopMotor(50);
+}
+void autoGive(int time){
+	SetMotor(intake,-127);
+	wait1Msec(time);
+	stopMotor(50);
+}
 
 // Puncher
-//void autoShoot(int time){
-//	SetMotor(puncher,80);
-//	wait1Msec(time);
-//	stopMotor(puncher);
-//}
+void autoShoot(int time){
+	SetMotor(puncher,80);
+	wait1Msec(time);
+	stopMotor(50);
+}
