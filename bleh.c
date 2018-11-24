@@ -3,7 +3,8 @@
 #pragma config(Motor,  port1,           left1,         tmotorVex393HighSpeed_HBridge, openLoop)
 #pragma config(Motor,  port2,           left2,         tmotorVex393HighSpeed_MC29, openLoop)
 #pragma config(Motor,  port3,           left3,         tmotorVex393HighSpeed_MC29, openLoop)
-#pragma config(Motor,  port4,           intake,        tmotorVex393HighSpeed_MC29, openLoop)
+#pragma config(Motor,  port4,           intakeT,       tmotorVex393HighSpeed_MC29, openLoop, reversed)
+#pragma config(Motor,  port5,           intakeB,       tmotorVex393HighSpeed_MC29, openLoop)
 #pragma config(Motor,  port7,           puncher,       tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port8,           right1,        tmotorVex393HighSpeed_MC29, openLoop, reversed)
 #pragma config(Motor,  port9,           right2,        tmotorVex393HighSpeed_MC29, openLoop, reversed)
@@ -94,6 +95,8 @@ void pre_auton()
 	SmartMotorLinkMotors(left1,left3);
 	SmartMotorLinkMotors(right1,right2);
 	SmartMotorLinkMotors(right1,right3);
+	// Intake motors
+	SmartMotorLinkMotors(intakeT,intakeB);
 	// Current monitor
 	SmartMotorCurrentMonitorEnable();
 	// Smart motor start
@@ -145,11 +148,14 @@ task usercontrol()
 
 		// Intake program
 		if (vexRT[Btn5U]==1){
-			motor[intake]=127;
+			motor[intakeT]=127;
+			motor[intakeB]=127;
 			}else if (vexRT[Btn5D]==1){
-			motor[intake]=-127;
+			motor[intakeT]=-127;
+			motor[intakeB]=-127;
 			} else{
-			motor[intake]=0;
+			motor[intakeT]=0;
+			motor[intakeB]=0;
 		}
 
 		// Puncher program
