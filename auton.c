@@ -5,47 +5,49 @@
 #pragma userControlDuration(105)
 
 
-// Drive encoders
-int leftEncode(int clicks){
-	return(SensorValue[leftEncoder]);
+
+// Auton drive
+void leftDrive(int clicks1){
+	SetMotor(left1,clicks1);
+	SetMotor(left2,clicks1);
+	SetMotor(left3,clicks1);
 }
-int rightEncode(int clicks){
-	return(SensorValue[rightEncoder]);
+void rightDrive(int clicks2){
+	SetMotor(right1,clicks2);
+	SetMotor(right2,clicks2);
+	SetMotor(right3,clicks2);
+}
+// Stop motors
+// Drive
+void driveStop(int speed){
+	leftDrive(speed);
+	rightDrive(speed);
 }
 
-// Drive PID
-void leftDrivePID(int clicks){
-	pidRequestedValue = clicks;
-}
-void rightDrivePID(int clicks){
-	pidRequestedValue = clicks;
-}
-void drivePID(int power1, int power2){
-	leftDrivePID(power1);
-	rightDrivePID(power2);
-}
-
-// Auton functions
-// Stop motor
-void stopMotor(int time){
-	wait1Msec(time);
-}
-
-// Intake
-void autoTake(int time){
-	SetMotor(intake,127);
-	wait1Msec(time);
-	stopMotor(50);
-}
-void autoGive(int time){
-	SetMotor(intake,-127);
-	wait1Msec(time);
-	stopMotor(50);
-}
 
 // Puncher
-void autoShoot(int time){
-	SetMotor(puncher,80);
+void puncherStop(int time){
 	wait1Msec(time);
-	stopMotor(50);
+}
+// Flipper
+void flipperStop(int time){
+	wait1Msec(time);
+}
+
+
+// Auton functions
+// Puncher
+void autoShoot(int time){
+	SetMotor(puncher,127);
+	puncherStop(50);
+}
+
+// Flipper
+void autoFlipUp(int time){
+	SetMotor(flipper,127);
+	flipperStop(50);
+}
+void autoFlipDown(int time){
+	SetMotor(flipper,-127);
+	flipperStop(50);
 }
