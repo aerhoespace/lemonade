@@ -4,8 +4,6 @@
 #pragma autonomousDuration(15)
 #pragma userControlDuration(105)
 
-
-
 // PID
 // PID using optical shaft encoder
 //
@@ -32,6 +30,17 @@ static float pdRequestedValue;
 
 // These could be constants but leaving
 
+// PID drive
+void leftDrivePID(int clicks1){
+	SetMotor(left1,clicks1);
+	SetMotor(left2,clicks1);
+	SetMotor(left3,clicks1);
+}
+void rightDrivePID(int clicks2){
+	SetMotor(right1,clicks2);
+	SetMotor(right2,clicks2);
+	SetMotor(right3,clicks2);
+}
 
 /*-----------------------------------------------------------------------------*/
 /*
@@ -80,14 +89,14 @@ task leftPIDController(){
 				pidDrive = PID_DRIVE_MIN;
 
 			// Send to motor
-			leftDrive(pidDrive * PID_MOTOR_SCALE);
+			leftDrivePID(pidDrive * PID_MOTOR_SCALE);
 			}else{
 			// Clear all
 			pidError      = 0;
 			pidLastError  = 0;
 			pidDerivative = 0;
-			leftDrive(0);
-			rightDrive(0);
+			leftDrivePID(0);
+			rightDrivePID(0);
 		}
 
 		// Run at 50Hz
@@ -133,14 +142,14 @@ task rightPIDController(){
 				pidDrive = PID_DRIVE_MIN;
 
 			// Send to motor
-			rightDrive(pidDrive * PID_MOTOR_SCALE);
+			rightDrivePID(pidDrive * PID_MOTOR_SCALE);
 			}else{
 			// Clear all
 			pidError      = 0;
 			pidLastError  = 0;
 			pidDerivative = 0;
-			leftDrive(0);
-			rightDrive(0);
+			leftDrivePID(0);
+			rightDrivePID(0);
 		}
 
 		// Run at 50Hz
@@ -174,32 +183,4 @@ void drivePID(int clicks, int clicks2){
 		wait1Msec(1000);
 
 	}
-}
-
-/*-----------------------------------------------------------------------------*/
-/*
-*/
-/*  Auton modes
-/*
-*/
-/*-----------------------------------------------------------------------------*/
-
-// Blue flagSide auton
-void autonB1 (){ // Blue flag auton
-
-}
-
-// Blue capSide auton
-void autonB2 (){ // Blue cap auton
-
-}
-
-// Red flagSide auton
-void autonR1 (){ // Red flag auton
-
-}
-
-// Red capSide auton
-void autonR2 (){ // Red cap auton
-
 }
