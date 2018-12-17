@@ -1,13 +1,13 @@
 #pragma config(Sensor, dgtl1,  leftEncoder,    sensorQuadEncoder)
 #pragma config(Sensor, dgtl3,  rightEncoder,   sensorQuadEncoder)
-#pragma config(Sensor, dgtl9,  jumper1,        sensorTouch)
-#pragma config(Sensor, dgtl10, jumper2,        sensorTouch)
-#pragma config(Sensor, dgtl11, jumper3,        sensorTouch)
-#pragma config(Sensor, dgtl12, jumper4,        sensorTouch)
+#pragma config(Sensor, dgtl9,  jumper9,        sensorTouch)
+#pragma config(Sensor, dgtl10, jumper10,       sensorTouch)
+#pragma config(Sensor, dgtl11, jumper11,       sensorTouch)
+#pragma config(Sensor, dgtl12, jumper12,       sensorTouch)
 #pragma config(Motor,  port1,           left1,         tmotorVex393HighSpeed_HBridge, openLoop)
 #pragma config(Motor,  port2,           left2,         tmotorVex393HighSpeed_MC29, openLoop)
 #pragma config(Motor,  port3,           left3,         tmotorVex393HighSpeed_MC29, openLoop)
-#pragma config(Motor,  port4,           puncher,       tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor,  port4,           puncher,       tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port5,           intakeB,       tmotorVex393HighSpeed_MC29, openLoop)
 #pragma config(Motor,  port6,           intakeT,       tmotorVex393HighSpeed_MC29, openLoop)
 #pragma config(Motor,  port7,           flipper,       tmotorVex393_MC29, openLoop, reversed)
@@ -21,22 +21,14 @@
 #pragma autonomousDuration(15)
 #pragma userControlDuration(105)
 
-
-
-// Auton vars
-float pid_Kp = 0.7;
-float pid_Kd = 0.5;
-
-float pd_Kp = 0.7;
-float pd_Kd = 0.5;
-
 // SmartMotorLibrary
 #include "jpearman/SmartMotorLib.c"
+// Joystick Controls
+// #include "JoystickDriver.c"
 // Other files
 #include "functions.c"
 #include "auton.c"
-#include "leftPID.c"
-//#include "rightPID.c"
+// #include "leftPID.c"
 
 #include "Vex_Competition_Includes.c"  // Main competition background code...do not modify!
 #pragma systemFile
@@ -82,10 +74,10 @@ void pre_auton()
 
 	// Link motors
 	// Drive motors
-	SmartMotorLinkMotors(left1,left2);
-	SmartMotorLinkMotors(left1,left3);
-	SmartMotorLinkMotors(right1,right2);
-	SmartMotorLinkMotors(right1,right3);
+	SmartMotorLinkMotors(left2,left1);
+	SmartMotorLinkMotors(left2,left3);
+	SmartMotorLinkMotors(right2,right1);
+	SmartMotorLinkMotors(right2,right3);
 	// Intake motors
 	SmartMotorLinkMotors(intakeT,intakeB);
 
@@ -93,6 +85,9 @@ void pre_auton()
 	SmartMotorCurrentMonitorEnable();
 	// Smart motor start
 	SmartMotorRun();
+
+	nMotorEncoder[left2] = 0;
+	nMotorEncoder[right2] = 0;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -107,18 +102,8 @@ void pre_auton()
 
 task autonomous()
 {
-
-	if(SensorValue[jumper1]==1){ // If jumper is plugged into port 9 run...
-	autonB1(); // Blue flag auton
-	}
-	if(SensorValue[jumper2]==1){ // If jumper is plugged into port 10 run...
-	autonB2(); // Blue cap auton
-	}
-	if(SensorValue[jumper3]==1){ // If jumper is plugged into port 11 run...
-	autonR1(); // Red flag auton
-	}
-	if(SensorValue[jumper4]==1){ // If jumper is plugged into port 12 run...
-	autonR2(); // Red cap auton
+	if(SensorValue[jumper12]==1){
+		autonB1(); // Blue flag side auton
 	}
 
 } // End of task auton
@@ -146,8 +131,9 @@ task autonomous()
 
 task usercontrol()
 {
-	// Drive program
 	while(true){
+
+		// Drive program
 		drive();{
 		}
 
@@ -162,13 +148,13 @@ task usercontrol()
 
 		// Puncher program
 		if (vexRT[Btn6U]==1){ // Right top trigger
-			SetMotor(puncher,127);
-			}else{
-			SetMotor(puncher,0);
+			puncherShoot();
+			} else{
+			puncherStay();
 		}
 
 		// Flipper Progam
-		if (vexRT[Btn5U]==1){ // Left top trigger
+		if (vexRT[Btn7U]==1){ // Left top button
 			flipperUp();
 			}else if (vexRT[Btn7D]==1){ // Left bottom button
 			flipperDown();

@@ -4,15 +4,7 @@
 #pragma autonomousDuration(15)
 #pragma userControlDuration(105)
 
-// Drive encoders
-int leftEncode(int clicks){
-	return(SensorValue[leftEncoder]);
-}
-int rightEncode(int clicks){
-	return(SensorValue[rightEncoder]);
-}
-
-// User control drive functions
+// User control
 void driveFunc(int speed1, int speed2){
 	SetMotor(left1,speed1);
 	SetMotor(right1,speed2);
@@ -26,10 +18,12 @@ void drive(){
 	// Slower speed = driveFunc(vexRT[Ch3]/0.7,vexRT[Ch2]/0.7);
 }
 
-// User control
 // Puncher
-void puncherShoot(int speed){
-	SetMotor(puncher,speed);
+void puncherShoot(){
+	SetMotor(puncher,127);
+}
+void puncherStay(){
+	SetMotor(puncher,0);
 }
 
 // Intake

@@ -30,6 +30,13 @@ static float pdRequestedValue;
 
 // These could be constants but leaving
 
+// Auton vars
+float pid_Kp = 0.7;
+float pid_Kd = 0.5;
+
+float pd_Kp = 0.7;
+float pd_Kd = 0.5;
+
 // PID drive
 void leftDrivePID(int clicks1){
 	SetMotor(left1,clicks1);
