@@ -1,6 +1,5 @@
 #pragma config(Sensor, dgtl1,  leftEncoder,    sensorQuadEncoder)
 #pragma config(Sensor, dgtl3,  rightEncoder,   sensorQuadEncoder)
-#pragma config(Sensor, dgtl9,  jumper9,        sensorTouch)
 #pragma config(Sensor, dgtl10, jumper10,       sensorTouch)
 #pragma config(Sensor, dgtl11, jumper11,       sensorTouch)
 #pragma config(Sensor, dgtl12, jumper12,       sensorTouch)
@@ -102,11 +101,12 @@ void pre_auton()
 
 task autonomous()
 {
+
 	if(SensorValue[jumper12]==1){
-		autonB1(); // Blue flag side auton
+		autonB1();
 	}
 
-} // End of task auton
+}
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -163,5 +163,5 @@ task usercontrol()
 		}
 
 
-	} // End of while true loop
-} // End of task usercontrol
+	}
+}

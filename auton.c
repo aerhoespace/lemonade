@@ -54,7 +54,7 @@ void intakeStop(int time){
 /*-----------------------------------------------------------------------------*/
 
 // Flag side auton
-void autonB1(){ // Blue flag auton
+void autonB1(){
 	// Start facing flags
 	// Drive forward to top falg position
 	autoDrive(127,127);{
@@ -75,19 +75,4 @@ void autonB1(){ // Blue flag auton
 	driveStop(50);{
 	}
 	wait1Msec(50);
-}
-
-// Higher scoring flag auton
-void autonB2(){ // Blue flag auton
-	// Start facing cap
-	// Drive forward to hit cap
-	// Intake ball halfway
-	// Backup
-	// Turn left
-	// Drive forward
-	// Shoot top flag
-	// Move ball up intake
-	// Drive forward
-	// Shoot middle flag
-	// Drive forward to hit botom flag
 }

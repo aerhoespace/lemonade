@@ -5,17 +5,20 @@
 #pragma userControlDuration(105)
 
 // User control
-void driveFunc(int speed1, int speed2){
+// Drive
+void leftDrive(int speed1){
 	SetMotor(left1,speed1);
-	SetMotor(right1,speed2);
 	SetMotor(left2,speed1);
-	SetMotor(right2,speed2);
 	SetMotor(left3,speed1);
+}
+void rightDrive(int speed2){
+	SetMotor(right1,speed2);
+	SetMotor(right2,speed2);
 	SetMotor(right3,speed2);
 }
 void drive(){
-	driveFunc(vexRT[Ch3],vexRT[Ch2]);
-	// Slower speed = driveFunc(vexRT[Ch3]/0.7,vexRT[Ch2]/0.7);
+	rightDrive(vexRT[Ch2]);
+	leftDrive(vexRT[Ch3]);
 }
 
 // Puncher
