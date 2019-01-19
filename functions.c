@@ -9,47 +9,38 @@
 void leftDrive(int speed1){
 	SetMotor(left1,speed1);
 	SetMotor(left2,speed1);
-	SetMotor(left3,speed1);
 }
 void rightDrive(int speed2){
 	SetMotor(right1,speed2);
 	SetMotor(right2,speed2);
-	SetMotor(right3,speed2);
 }
 void drive(){
-	rightDrive(vexRT[Ch2]);
 	leftDrive(vexRT[Ch3]);
+	rightDrive(vexRT[Ch2]);
 }
 
 // Puncher
 void puncherShoot(){
-	SetMotor(puncher,127);
+	SetMotor(puncher1,100);
+	SetMotor(puncher2,100);
+	SetMotor(puncher3,100);
 }
 void puncherStay(){
-	SetMotor(puncher,0);
+	SetMotor(puncher1,0);
+	SetMotor(puncher2,0);
+	SetMotor(puncher3,0);
 }
 
 // Intake
 void intakeIn(){
-	SetMotor(intakeT,127);
-	SetMotor(intakeB,127);
+	SetMotor(intake1,127);
+	SetMotor(intake2,127);
 }
 void intakeOut(){
-	SetMotor(intakeT,-127);
-	SetMotor(intakeB,-127);
+	SetMotor(intake1,-127);
+	SetMotor(intake2,-127);
 }
 void intakeStay(){
-	SetMotor(intakeT,0);
-	SetMotor(intakeB,0);
-}
-
-// Flipper
-void flipperUp(){
-	SetMotor(flipper,127);
-}
-void flipperDown(){
-	SetMotor(flipper,-127);
-}
-void flipperStay(){
-	SetMotor(flipper,0);
+	SetMotor(intake1,0);
+	SetMotor(intake2,0);
 }
