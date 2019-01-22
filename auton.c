@@ -45,45 +45,15 @@ void autoTake(int time){
 	SetMotor(intake2,127);
 	wait1Msec(time);
 }
+void autoGive(int time){
+	SetMotor(intake1,-127);
+	SetMotor(intake2,-127);
+	wait1Msec(time);
+}
 void intakeStop(int time){
 	SetMotor(intake1,0);
 	SetMotor(intake2,0);
 	wait1Msec(time);
-}
-
-/*-----------------------------------------------------------------------------*/
-/*
-/*  Auton tasks
-/*
-/*-----------------------------------------------------------------------------*/
-
-// Puncher
-task shoot(){
-	while(true){
-		autoShoot(1800);
-	}
-}
-task dontShoot(){
-	while(true){
-		puncherStop(10);
-	}
-}
-
-// Intake
-task halfway(){
-	while(true){
-		autoTake(300);
-	}
-}
-task up(){
-	while(true){
-		autoTake(450);
-	}
-}
-task urdone(){
-	while(true){
-		intakeStop(10);
-	}
 }
 
 /*-----------------------------------------------------------------------------*/
@@ -176,6 +146,16 @@ void autonR2(){
 	driveStop(50);
 	// Intake ball fully
 	autoTake(1000);{
+	}
+	intakeStop(50);{
+	}
+	// Bring intake down
+	autoGive(150);{
+	}
+	intakeStop(50);{
+	}
+	// Intake ball fully
+	autoTake(500);{
 	}
 	intakeStop(50);{
 	}
@@ -288,7 +268,7 @@ void autonB2(){
 	// Turn right to face flags
 	autoDrive(80,-80);{
 	}
-	wait1Msec(205);
+	wait1Msec(185);
 	driveStop(50);
 	// Forward slightly
 	autoDrive(127,127);{
@@ -308,7 +288,17 @@ void autonB2(){
 	wait1Msec(215);
 	driveStop(50);
 	// Intake ball fully
-	autoTake(1000);{
+	autoTake(1500);{
+	}
+	intakeStop(50);{
+	}
+	// Bring intake down
+	autoGive(150);{
+	}
+	intakeStop(50);{
+	}
+	// Intake ball fully
+	autoTake(500);{
 	}
 	intakeStop(50);{
 	}

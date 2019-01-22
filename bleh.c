@@ -103,7 +103,7 @@ void pre_auton()
 	// Reset encoders
 	SensorValue[leftEncoder] = 0;
 	SensorValue[rightEncoder] = 0;
-}
+} // End of task pre_auton
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -119,10 +119,10 @@ task autonomous()
 {
 
 	/*if(SensorValue[jumper5]==1){
-		autonR();
+	autonR();
 	}
-	if(SensorValue[jumper6]==1){ // 100%
-		autonB();
+	if(SensorValue[jumper6]==1){
+	autonB();
 	}*/
 	if(SensorValue[jumper7]==1){ // 100%
 		autonR1(); // Red flag 3 pt.
@@ -137,25 +137,13 @@ task autonomous()
 		autonB3(); // Blue cap 4 pt.
 	}
 	if(SensorValue[jumper11]==1){
-		autonB2(); // Red flag 6 pt.
+		autonR2(); // Red flag 6 pt.
 	}
 	if(SensorValue[jumper12]==1){
-		autonR2(); // Blue flag 6 pt.
+		autonB2(); // Blue flag 6 pt.
 	}
 
-	/*if(SensorValue[jumper9]==1){
-	autonR2(); // Red cap auton(+4)
-	}
-	if(SensorValue[jumper10]==1){ // 100%
-	autonR1(); // Red flag auton(+3)
-	}
-	if(SensorValue[jumper11]==1){
-	autonB2(); // Blue cap auton(+4)
-	}
-	if(SensorValue[jumper12]==1){ // 100%
-	autonB1(); // Blue flag auton(+3)
-	}*/
-}
+} // End of task autonomous
 
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
@@ -184,6 +172,15 @@ task usercontrol()
 
 		// Drive program
 		drive();{
+			if (vexRT[Ch3] > 10){
+				intakeIn();
+				} else if (vexRT[Ch2] > 10){
+				intakeIn();
+				} else if (vexRT[Ch3] < 10){
+				intakeStay();
+				} else if (vexRT[Ch2] < 10){
+				intakeStay();
+			}
 		}
 
 		// Intake program
@@ -191,9 +188,9 @@ task usercontrol()
 			intakeIn();
 			}else if (vexRT[Btn5U]==1){ // Left top trigger
 			intakeOut();
-			} else{
-			intakeStay();
-		}
+		} /*else{
+		intakeStay();
+		}*/
 
 		// Puncher program
 		if (vexRT[Btn6U]==1){ // Right top trigger
@@ -203,4 +200,4 @@ task usercontrol()
 		}
 
 	} // End of while true
-}
+} // End of task usercontrol
